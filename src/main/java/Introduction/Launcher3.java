@@ -1,4 +1,4 @@
-package LooseExamples;
+package Introduction;
 
 import io.reactivex.Observable;
 
