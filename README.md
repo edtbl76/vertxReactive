@@ -10,7 +10,7 @@ intervallic generation of events.
 - Observables are PUSHed where as Streams are PULLed. 
 
 ---
-## ObservableObserver
+## Observable
 ### Key Concepts
 - onNext()
     - passes each item sequentially from Source (Observable) to destination 
@@ -30,4 +30,6 @@ intervallic generation of events.
     - This means that an Observable can NOT pass events concurrently. 
     
 ---
+## Observers
+
 
