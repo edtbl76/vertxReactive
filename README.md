@@ -32,4 +32,32 @@ intervallic generation of events.
 ---
 ## Observers
 
+### KeyConcepts (Should Seem Familiar)
+- onNext(), onComplete(), onError()
+    - these methods define the TYPE of Observer that is used. 
+    
+    
+    EXAMPLE
+    
+        public interface Observer<T> {
+            void onSubscribe(Disposable d);
+            void onNext(T value);
+            void onError(Throwable e);
+            void onComplete();
+        }
+        
+### Observable Chains
+- the first Observable in a chain emits events. 
+- in-chain observables don't know where events originate from, or if
+the next event is "the end"
+- each observable returned by a chain operator
+    - starts its life as an Observer (consuming the event from the
+    upstream Observable)
+    - processes/transforms the event data
+    - becomes a "relay" Observable to move the event further downstream
+    
+The key concept here is that technically every Observable but the "source"
+observable starts its life as an Observer. 
+        
+    
 
