@@ -1,5 +1,10 @@
 # vertxReactive
 
+Being Reactive means
+- lower memory usage
+- robust concurrency
+- disposability (i.e. cleaning up after yourself!!!!)
+
 ---
 ## Introduction 
 This contains some basic examples of the Observable-Observer relationship. It also
@@ -221,5 +226,26 @@ manage the stopping of emissions and trashing of resources.
     subscribeWith()
         - this returns a Disposable, so you can manage event disposal.
         
+---
+# Operators
+These are the many many nuggets of functionality that enable the execution of business logic within the Rx framework. 
+- an operator is an OBSERVER to the Observable it is executed against. 
+- the operator "DOES THE THING" and then it becomes the PRODUCER for downstream Observers. 
 
+
+       BEST PRACTICES:
+       - Observable STARTS THE THING
+       - Operators DO THINGS
+       - a Final Observer CONSUMES THE THING
+       
+            That's it. You don't get points for being clever. 
+       
+       
+       BAD PRACTICES:
+       - DON'T CHEAT
+       - don't extract values out of the middle of the chain. 
+       - don't use blocking processes
+       - don't use imperative programming. 
+       
+       WHY?
 
