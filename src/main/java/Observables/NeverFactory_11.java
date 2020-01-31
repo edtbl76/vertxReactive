@@ -1,5 +1,6 @@
 package Observables;
 
+import Utils.Generic;
 import io.reactivex.Observable;
 
 public class NeverFactory_11 {
@@ -20,10 +21,6 @@ public class NeverFactory_11 {
                 () -> System.out.println("I'm not going to me executed!")
         );
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Generic.wait(2000);
     }
 }

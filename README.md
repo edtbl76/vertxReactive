@@ -113,4 +113,113 @@ connect() instead.
 #### Multicasting:
 One of the major benefits of ConnectableObservers is that it allows you to 
 fire events to ALL OBSERVERS SIMULTANEOUSLY
+
+---
+# Single
+- This is a special version of Observable that only emits a single item. 
+- it works the same, but it has a smaller repertoire of operators (i.e.
+only the ones that can be sensibly used for a single item.)
+
+- single there is only one item, onSuccess() is more or less a 
+combination of onNext() and onComplete().
+
+- you can convert a Single back to an Observable 
+    - using toObservable()
+
     
+    Single Interface
+    
+        interface SingleObserver<T> {
+            void onSubscribe(Disposable D);
+            void onSuccess(T value);
+            void onError(Throwable throwable);
+        
+        }
+        
+# Maybe
+- like a single, but it allows an empty() emission.
+- onNext() is only called when an emission is present
+- onComplete() is called either way.
+
+    
+    Maybe Interface
+    
+        interface MaybeObservable<T> {
+            void onSubscribe(Disposable d);
+            void onSuccess(T value);        <-- Replaces onNext()
+            void onError(Throwable throwable);
+            void onComplete();
+        } 
+
+---
+# Completable
+- Rx operator that only cares about whether or not the event took place. 
+- does NOT receive ANY emissions.
+    - no onNext()
+    
+    
+    Completable Interface
+    
+    interface CompletableObserver<T> {
+        void onSubscribe(Disposable d);
+        void onComplete();
+        void onError(Throwable throwable);
+    }
+
+    
+---
+# Disposables
+
+## How subscribe() works
+when subscribe() is called, it begins "listening" to an Observable. 
+- stream is created to process events through Observable -> Observer chain.
+
+When we are done w/ the data/events, we want the resources associated w/
+the streams to be disposed so that they can be properly GC'd. 
+
+- finite observables (the ones that call onComplete()) SHOULD clean up
+- infinite or long running observables require our intervention. 
+    - truthfully, RxJava recommends explicit disposal of resources
+    due to "lack of trust" in GC, to prevent memory leaks. 
+    
+## Disposable
+- connection between Observable and an ACTIVE observer. 
+- useful methods
+    - isDisposed() indicates if resources have been canned
+    - dispose(), stops emissions and disposes of ALL resources for
+    that Observer. 
+    
+    
+    Interface:
+    
+    public interface Disposable {
+        void dispose();
+        boolean isDisposed();
+    }
+    
+- When onError, onNext and onComplete are provided to subscribe(), 
+it returns a Disposable, which dispose() maybe called against to 
+manage the stopping of emissions and trashing of resources.
+    - if we override the methods of an Observer we gain access to 
+    their disposables, allowing any of these three events to call
+    dispose()
+   - the disposable returned at this point is sent through the
+   "Observable" chain. 
+    - this means that ever link in the chain can access, and therefore
+    USE the Disposable. 
+
+- Disposable is passed into an Observer via onSubscribe()
+    - the entire purpose of this is to give developers the option to
+    kill the subscription at a point in time of their choosing. 
+    
+### ResourceObserver
+- This is an Observer that uses default Disposable handling. 
+    - This exists because you can NOT pass an Observer to subscribe(). 
+    - A standard Observer is of type VOID, because it is designed to
+    handle Disposables. 
+    - ResourceObserver is a special version of Observer that is passed to
+    subscribeWith()
+        - this returns a Disposable, so you can manage event disposal.
+        
+
+

@@ -1,5 +1,6 @@
 package Observables;
 
+import Utils.Generic;
 import io.reactivex.Observable;
 
 import java.util.concurrent.TimeUnit;
@@ -24,11 +25,9 @@ public class IntervalFactory_8 {
         Observable.interval(1, TimeUnit.SECONDS)
                 .subscribe(s -> System.out.println(s + " Mississippi!"));
 
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        Generic.wait(10000);
+
     }
 
 }

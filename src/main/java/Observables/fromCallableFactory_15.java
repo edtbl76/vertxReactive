@@ -31,7 +31,8 @@ public class fromCallableFactory_15 {
 
     private static void badExample() {
 
-        Observable.just(1/0)
+
+        Observable.just(13/0)
                 .subscribe(
                         System.out::println,
                         ex -> System.out.println("Error!: " + ex)
@@ -40,7 +41,7 @@ public class fromCallableFactory_15 {
 
     private static void goodExample() {
 
-        Observable.fromCallable(() -> 1/0)
+        Observable.fromCallable(() -> 13/0)
                 .subscribe(
                         integer -> System.out.println("RCVD: " + integer),
                         throwable -> System.out.println("ERROR:" + throwable)

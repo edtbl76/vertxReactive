@@ -1,5 +1,6 @@
 package ColdAndHot;
 
+import Utils.Generic;
 import io.reactivex.Observable;
 
 import java.util.concurrent.TimeUnit;
@@ -21,17 +22,11 @@ public class ColdInterval_5 {
 
         // Create my observers
         observable.subscribe(l -> System.out.println("Observer 1: [" + l + "]"));
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
-        }
+        Generic.wait(5000);
+
 
         observable.subscribe(l -> System.out.println("Observer 2: [" + l + "]"));
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
-        }
+        Generic.wait(5000);
+
     }
 }

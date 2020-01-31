@@ -1,5 +1,6 @@
 package Introduction;
 
+import Utils.Generic;
 import io.reactivex.Observable;
 
 import java.util.concurrent.TimeUnit;
@@ -32,11 +33,7 @@ public class Launcher3 {
             - Once the sleep() is over, the main thread terminates, taking the compute thread with it.
 
          */
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Generic.wait(10000);
 
     }
 }
