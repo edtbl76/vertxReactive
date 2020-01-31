@@ -37,7 +37,7 @@ public class CompositeDisposable_3 {
         /*
             Sleep so we can have them do work.
          */
-        Generic.wait(3000);
+        Generic.wait(3);
 
         /*
             Dispose!
@@ -47,7 +47,7 @@ public class CompositeDisposable_3 {
         /*
             Sleep again to prove it's empty
          */
-        Generic.wait(3000);
+        Generic.wait(3);
     }
 
 

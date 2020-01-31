@@ -26,7 +26,7 @@ public class IntervalFactory_8 {
                 .subscribe(s -> System.out.println(s + " Mississippi!"));
 
 
-        Generic.wait(10000);
+        Generic.wait(10);
 
     }
 

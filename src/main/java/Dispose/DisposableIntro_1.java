@@ -15,13 +15,13 @@ public class DisposableIntro_1 {
                 l -> System.out.println("RCVD: [" + l + "]"));
 
         // Sleep to allow interval to execute on COMPUTATION SCHEDULER>
-        Generic.wait(5000);
+        Generic.wait(5);
 
         // Kill it!
         disposable.dispose();
 
         // Sleep to demonstrate that events have stopped.
-        Generic.wait(5000);
+        Generic.wait(5);
 
     }
 }

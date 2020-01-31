@@ -26,14 +26,14 @@ public class HotInterval_6 {
             We set the timer here, so that the first observer will chew on events for 5 seconds before the next
             observer starts.
          */
-        Generic.wait(5000);
+        Generic.wait(5);
 
         /*
             The second observer starts and begins chewing on the CURRENT events. The timer here is a keep alive
             to make sure that we have time to see the results.
          */
         connectableObservable.subscribe(l -> System.out.println("Observer 2: [" + l + "]"));
-        Generic.wait(5000);
+        Generic.wait(5);
     }
 
 }

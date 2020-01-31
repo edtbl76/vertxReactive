@@ -1,5 +1,6 @@
 package Dispose;
 
+import Utils.Generic;
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.ResourceObserver;
@@ -48,11 +49,7 @@ public class ResourceObserver_2 {
             This is our "keepalive" in the main thread to ensure Observable.interval() can be executed by computation
             scheduler.
          */
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Generic.wait(3);
 
         /*
             Demonstrating how we can use the methods of Disposable.
@@ -62,5 +59,10 @@ public class ResourceObserver_2 {
         System.out.println(disposable.isDisposed());
         disposable.dispose();
         System.out.println(disposable.isDisposed());
+
+        /*
+            Prove it with an additional timer
+         */
+        Generic.wait(3);
     }
 }

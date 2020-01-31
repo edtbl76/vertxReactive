@@ -1,5 +1,6 @@
 package Observables;
 
+import Utils.Generic;
 import io.reactivex.Observable;
 
 import java.util.concurrent.Executors;
@@ -16,7 +17,7 @@ public class FutureFactory_9 {
         Future<Integer> future =
                 Executors.newSingleThreadExecutor()
                 .submit(() -> {
-                    Thread.sleep(1000);
+                    Generic.wait(1);
                     return 10;
                 });
 

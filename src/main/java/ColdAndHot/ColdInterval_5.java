@@ -22,11 +22,11 @@ public class ColdInterval_5 {
 
         // Create my observers
         observable.subscribe(l -> System.out.println("Observer 1: [" + l + "]"));
-        Generic.wait(5000);
+        Generic.wait(5);
 
 
         observable.subscribe(l -> System.out.println("Observer 2: [" + l + "]"));
-        Generic.wait(5000);
+        Generic.wait(5);
 
     }
 }

@@ -33,7 +33,7 @@ public class Launcher3 {
             - Once the sleep() is over, the main thread terminates, taking the compute thread with it.
 
          */
-        Generic.wait(10000);
+        Generic.wait(10);
 
     }
 }

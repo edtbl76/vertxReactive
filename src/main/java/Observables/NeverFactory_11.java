@@ -21,6 +21,6 @@ public class NeverFactory_11 {
                 () -> System.out.println("I'm not going to me executed!")
         );
 
-        Generic.wait(2000);
+        Generic.wait(2);
     }
 }

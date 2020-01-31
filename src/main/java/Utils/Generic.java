@@ -2,9 +2,9 @@ package Utils;
 
 public class Generic {
 
-    public static void wait(int millis) {
+    public static void wait(int seconds) {
         try {
-            Thread.sleep(millis);
+            Thread.sleep(seconds * 1000);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
