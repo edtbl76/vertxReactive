@@ -247,5 +247,44 @@ These are the many many nuggets of functionality that enable the execution of bu
        - don't use blocking processes
        - don't use imperative programming. 
        
-       WHY?
 
+## Suppressors
+Operators that SUPPRESS some or all events based on input parameters that determine what is to be suppressed, and how
+that suppression will be carried out.
+
+- filter()
+    - accepts a Predicate, emitting the events that evaluate to true to the next Observer. 
+    
+- take()
+    - accepts a number that acts as a hard upper limit of the number of 
+    of events that will be emitted before onComplete() is called. 
+    - accepts a number, followed by a TimeUnit that represents a timebox in which events will be pushed.
+- skip()
+    - This is essentially the OPPOSITE of take. 
+    - accepts a number as the number of events to skip before the Observable begins emitting.
+    - also accepts a number, followed by a TimeUnit that represents a duration of time in which events are 
+    skipped before they begin being pushed. 
+    
+- takeLast()
+    - similar to take(), but instead of taking the first N events, it takes the last N events
+    - NOTE: this results in a phenomenon dubbed "queue and delay", because the entire chain of events
+    must be emitted before the operator can determine what the last N events are. 
+- skipLast()
+    - similar to skip(), but instead of skipping the first N events, it skips the last N events. 
+    - this is likewise subject to "queue and delay"
+    
+- takeWhile() & skipWhile()
+    - these are smarter versions of take and skip, that accept a Predicate as an argument. 
+    - these operators suppress emissions based on the the conditions of the Predicate.
+    
+- distinct()
+    - accepts various types of arguments that allow suppression of events based on identifying the duplication of
+    the event (or some attribute thereof)
+    
+- distinctUntilChanged()
+    - specialized implementation of distinct() used for suppressing consecutive repetition of the same events. 
+    
+- elementAt()
+    - there are many variations of this, but it returns a Maybe, because it can return a HIT (i.e. the element exists)
+    or a MISS (if the index is out of bounds or empty)
+   
