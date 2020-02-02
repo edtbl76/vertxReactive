@@ -287,4 +287,79 @@ that suppression will be carried out.
 - elementAt()
     - there are many variations of this, but it returns a Maybe, because it can return a HIT (i.e. the element exists)
     or a MISS (if the index is out of bounds or empty)
+    
+## Transformers
+Robots in Disguise. 
+These are operators that perform some form of mutation on the events. (events are data. an event is a datum. the end
+result is a collection of events that are "hopefully" meaningful INFORMATION to the user).
+
+- map()
+    - map is like a Man-in-the-middle. It acts as an Observer to the upstream Observable, such that it consumers 
+    the unaltered events. 
+    - Afterwards, map() mutates the data ONE AT A TIME (Yes... this is important) in some fashion
+    - finally it acts as the Observable to the downstream chain of operators until reaching the final Observer/Consumer. 
+    
+- startWith() & startWithArray()
+    - this is a way to insert data before events are pushed. (There are various uses for this such as providing a 
+    title header, or a pointer that signals the start-of-messages etc.)
+    
+- defaultIfEmpty() & switchIfEmpty()
+    - These are convenience functions that provide default values/observables when a particular observable results in
+    empty (for whatever reason... i.e. as the result of suppression from previous operators in a chain, or if
+    it was empty initially)
+    
+- sorted()
+    - Do I really have to explain this one? 
+    - The functionality is hopefully obvious, however there are some caveats relative to performance. 
+        - first off, this is a natural order sort by default (Comparators are supported as args)
+        - in order to sort the items, all of the items must be present. 
+            - this is SLOOOOOOW against large data sets. Don't do it. 
+            - this is impossible against infinite observables... it WILL result in an OutOfMemory error.
+            
+- delay()
+    - Like sorted, this is fairly self explanatory. It inserts a delay where-ever in the chain you stick it. 
+    - This works similar to interval() such that the main thread needs to be "activated" in order to ensure
+    that the computation scheduler is executed. 
+    
+    - this is actually a fairly powerful operator. While my example is fairly basic, you can also pass in a separate
+    Observer that will act as a trigger, such that the "delayed" Observer will emit when events are pushed through the
+    "argument" Observer. 
+    
+- repeat() & repeatUntil()
+    - This is mostly self explanatory. I'm going to "do something over and over"
+    - The basic param is just "the number of times to do it again"
+    - You can also supply a BooleanSupplier (repeatUntil()) as a way to 
+    
+    - NOTE: no parameter results in an infinite sequence of Single event Observables. 
+        - this is not, I say, this is NOT, an infinite Observable. 
+        - Ed, what's the difference? 
+            - well, since you asked, an infinite Observable is a sequence of infinite events that never
+            reaches onComplete. 
+            - an infinite sequence of single event Observables is a constant sequence of alternating onNext, onComplete?
+        - This is an oversight in my opinion, but I digress. 
+        
+- scan()
+    - This was the official winner for the poorest naming convention of any Rx operator. It was given a short vacation
+    to Tierra Del Fuego. 
+    - scan() is what the docs call a "rolling aggregator". Each emission uses a biconsumer with an accumulator and the
+    result of the summation. 
+        - this is useful for counters and.. accumulators etc. 
+    
+- cast()
+    - there is an operator called cast used as a Brute-force method for casting one object to another due to potential
+    inheritance/polymorph collisions. 
+    - DO NOT USE THIS UNLESS YOU ABSOLUTELY MUST. 
+        - It is my preference to properly use wildcards, generics etc. in these cases. 
+        - I am always very concerned when I read "brute-force" in official documentation. 
+        - I'm also concerned that proper alternatives aren't presented, so I'm going to provide them here. 
+        - If you can not otherwise solve type issues WITHOUT BREAKING THE FUNDAMENTAL RULES OF REACTIVE PROGRAMMING 
+        (also mentioned above at the beginning of the Operators Section)
+        Then you may consider using the cast() operator. 
+        
+## Reducers
+
+NOTE: scan() vs. reduce() are different, but easy to get confused. 
+- scan emits "rolling aggregation" (i.e. many emissions)
+- reduce yields a SINGLE EMISSION that represents the FINAL ACCUMULATION once onComplete() is called. 
+
    
