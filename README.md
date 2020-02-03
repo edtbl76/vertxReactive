@@ -427,3 +427,29 @@ NOTE:
 ### collect() vs. reduce()
 We mentioned before that reduce() is not recommended for stuffing events into mutable objects. That being said, 
 you may have the need for doing so. 
+
+## Error Management Operators
+
+### onError 
+Let me start by saying this is NOT about onError().
+- onError() is a callback that captures an exception and converts it to an event that is
+pushed down the chain of operators to the final Observer so that the Observer has the 
+responsibility of handling the error. 
+
+- There is one problem with this model
+    - what if the error condition is recoverable? If we wait for the Observer to handle it, then
+    it is likely that we'll have to handle the recovery at the Observer and push it into another Observable to 
+    be consumed again. 
+    - It makes more sense to implement recovery closer to the point where the exception occurred. 
+    
+- onErrorReturn() & on onErrorReturnItem()
+    - these are methods that provide alternate values to the exception message. 
+    - This allows you to stop the chain AT THAT POINT, but continue to process that final event instead of blowing up. 
+    - NOTE: The chain of operators still ends at this point. 
+    
+- onErrorResumeNext()
+    - This is slightly flexible in that it allows you to accept another Observable to be executed when an exception is
+    encountered. 
+ 
+ - retry(), retryWhen() and retryUntil()
+    - retries are pretty self explanatory. 

@@ -42,6 +42,8 @@ public class CollectGuava_4 {
                 /*
                     This is the call to build().
                     This is a very reactive way of accomplishing the task I mentioned in the comment above.
+                    - The collect operator is going to build that mutable "thing"
+                    - then we hand it to the map() operator which zips it up nice and tidy and throws away the key!
 
                  */
                 .map(ImmutableList.Builder::build)
