@@ -247,6 +247,22 @@ These are the many many nuggets of functionality that enable the execution of bu
        - don't use blocking processes
        - don't use imperative programming. 
        
+       
+One final note that I feel is probably overkill, but I have seen many developers overlook. 
+Operators are written as a chain of events. This means that the INPUT to any given operator is the output of the
+stage before it. 
+
+If I have one billion events from the initial Observable, and every event is suppressed by the first operator, then the
+input is effectively Observable.empty() for any other step in the chain (unless there is a default/switch action
+that results in the insertion of alternative events/values.) The point to take away from this is that complicated chains
+of events may behave differently than expected based on the order in which it was written. 
+
+THE EASIEST WAY TO TROUBLESHOOT COMPLEX CHAINS:
+- break them into smaller chains. If some result isn't what you expect, then reduce the problem to the inputs/outputs
+occurring at certain points of the chain, and replace the code with each half of your chain to ensure that 
+Observables are pushing the events you expect, and Observers are consuming the events that you expect. 
+
+End Rant :)
 
 ## Suppressors
 Operators that SUPPRESS some or all events based on input parameters that determine what is to be suppressed, and how
@@ -357,9 +373,39 @@ result is a collection of events that are "hopefully" meaningful INFORMATION to 
         Then you may consider using the cast() operator. 
         
 ## Reducers
+This is the same type of action you expect it is. The purpose of a reducer is to take an Observable (or Flowable) and
+consolidate it into a single emission (This isn't always a Single)
 
 NOTE: scan() vs. reduce() are different, but easy to get confused. 
 - scan emits "rolling aggregation" (i.e. many emissions)
 - reduce yields a SINGLE EMISSION that represents the FINAL ACCUMULATION once onComplete() is called. 
+
+NOTE: This should go without saying, but I will anyway. It isn't plausible to consolidate infinite data sets. 
+
+- count()
+    - provides the number of events presented to it as a Single
+
+- reduce()
+    - uses the same exact "business logic" as scan(), BUT, it returns a Single/Maybe (Depending on how you set it up)
+    that emits the final aggregation of all events presented to the operator. 
+       
+- all()
+    - This is essentially a form of ACP (Atomic Commit Protocol) that takes a Predicate, such that if one sub-action of 
+    an action fails, then the entire action fails. 
+    - It could also be thought of an AND operation
+    - emits a Single<Boolean>
+
+- any() 
+    - this is more like an OR operation. If any of the results fit the provided Predicate, then it is true.
+    - emits a Single<Boolean>
+    
+- contains()
+    - accepts a parameter of the same type being pushed by the Observable. 
+    - returns a Single<Boolean> indicating whether the value represents an event in the Observable. 
+    
+## Collectors
+These are sort of like reducers, but instead of consolidating a bunch of events into a single event all of the events
+are stuffed into a Collection, and the Collection is emitted as the result.
+
 
    
