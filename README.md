@@ -405,7 +405,25 @@ NOTE: This should go without saying, but I will anyway. It isn't plausible to co
     
 ## Collectors
 These are sort of like reducers, but instead of consolidating a bunch of events into a single event all of the events
-are stuffed into a Collection, and the Collection is emitted as the result.
+are stuffed into a Collection, and the Single Collection is emitted as the result.
+- (The commonality being that both reducers and collectors reduce an observable/flowable into a single emission)
+
+NOTE:
+- Collectors should be reserved for "the logical grouping of events". In other words, the choice to collect() should
+be deliberate and well thought out. Don't do it just because Collections are easier to work with or you are more 
+familiar with them. (When all else fails, go to the beginning of the Operators section and review the best practices!)
+
+NOTE: 
+- I'm not defining these. They should be fairly self explanatory. 
+
+- toList()
+- toSortedList()
+- toMap() & to MultiMap()
+
+- collect()
+    - this is the generic collector when the pre-baked operators aren't good enough. 
 
 
-   
+### collect() vs. reduce()
+We mentioned before that reduce() is not recommended for stuffing events into mutable objects. That being said, 
+you may have the need for doing so. 
