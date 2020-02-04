@@ -442,6 +442,7 @@ responsibility of handling the error.
     be consumed again. 
     - It makes more sense to implement recovery closer to the point where the exception occurred. 
     
+### Not onError
 - onErrorReturn() & on onErrorReturnItem()
     - these are methods that provide alternate values to the exception message. 
     - This allows you to stop the chain AT THAT POINT, but continue to process that final event instead of blowing up. 
@@ -453,3 +454,13 @@ responsibility of handling the error.
  
  - retry(), retryWhen() and retryUntil()
     - retries are pretty self explanatory. 
+    
+## Lights! Camera! Action Operators
+These are better known as the doOns and doAfters. These are sneaky little stinkers that act like an Observer stuffed 
+into the middle of a chain of Observables. 
+- The doOn is usually a Consumer that performs an action before the event is pushed downstream. (You can also think of it
+as being performed "Right Now", like the Van Halen song.)
+
+
+
+
