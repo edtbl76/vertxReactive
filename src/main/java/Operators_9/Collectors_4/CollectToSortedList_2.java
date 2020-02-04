@@ -1,4 +1,4 @@
-package Operators_9;
+package Operators_9.Collectors_4;
 
 import io.reactivex.Observable;
 

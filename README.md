@@ -461,6 +461,33 @@ into the middle of a chain of Observables.
 - The doOn is usually a Consumer that performs an action before the event is pushed downstream. (You can also think of it
 as being performed "Right Now", like the Van Halen song.)
 
+- doOnNext(), doAfterNext()
+- doOnComplete()
+- doOnError()
+
+- doOnEach()
+    - fires for onNext + onComplete OR onNext + onError.
+- doOnTerminate()
+    - fires for terminators (i.e. onError or onComplete)
+
+- doOnSubscribe, doOnDispose, doFinally
+    - doOnSubscribe is used to create a disposable. 
+    - doOnDispose is used to create an action when dispose/onDispose is activated.
+        - NOTE: This is pretty rare unless we are talking about infinite/long running observables. If onComplete() is
+        reached, then the state of the Disposable.isDisposed() is true... so doOnDispose() doesn't fire. 
+    - doFinally is like doTerminate and doOnDispose had a baby.
+        - this fires for onComplete, onError and onDispose 
+
+Please review each example for details. 
+
+NOTE: It is HIGHLY recommended that you investigate the use of these convenience functions. Debugging reactive streams
+is much easier if you understand how these work. It is also a very short "walk" from using these as debugging tools to 
+using them as hooks for instrumentation. 
+
+Concurrency and Reactive Programming can be challenging paradigms, especially when reviewing strange unintuitive failure
+modes. Action Operators can shed some "light" on these issues, and provide a "camera" to record the events being 
+investigated. (I'm silly)
+
 
 
 

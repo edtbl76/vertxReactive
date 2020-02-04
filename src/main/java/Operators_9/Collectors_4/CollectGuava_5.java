@@ -3,7 +3,7 @@ package Operators_9.Collectors_4;
 import com.google.common.collect.ImmutableList;
 import io.reactivex.Observable;
 
-public class CollectGuava_4 {
+public class CollectGuava_5 {
 
     public static void main(String[] args) {
 
