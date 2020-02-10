@@ -33,14 +33,15 @@ public class AmbWith_2 {
                 .map(l -> "dumb example. Never fires.");
 
         /*
-            We know what the result is going to be for each of these.
-
-            The first is interrupted, the second the "standard" period wins.
+            THIS Observable is going to be "lose" to THAT Observable.
          */
         period.ambWith(interruptus)
                 .subscribe(System.out::println, Throwable::printStackTrace, () -> System.out.println("done"));
         Generic.wait(10);
 
+        /*
+            THIS Observable is going to WIN to THAT Observable.
+         */
         period.ambWith(neverFires)
                 .subscribe(System.out::println, Throwable::printStackTrace, () -> System.out.println("done"));
         Generic.wait(10);
