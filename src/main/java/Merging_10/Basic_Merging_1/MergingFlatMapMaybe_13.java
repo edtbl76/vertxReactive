@@ -50,5 +50,24 @@ public class MergingFlatMapMaybe_13 {
                         () -> System.out.println("Still Done")
                 );
 
+
+        /*
+            Here is an actual example of Maybe doing its job
+         */
+        Observable.just(1, 2, 3, 4, 5)
+                /*
+                    Remember this? This is how we can use a nice little ternary statement to do some minor logic inside
+                    a flatMap.
+
+                    This works just as well for Maybe as it did for Observable.
+
+                    We'll get results for the first 3 numbers, but once it crosses 3, we go to empty.
+                 */
+                .flatMapMaybe(integer -> (integer > 3) ? Maybe.empty() : Maybe.just(integer * integer))
+                .subscribe(
+                        integer -> System.out.print(integer + " "),
+                        Throwable::printStackTrace,
+                        System.out::println);
+
     }
 }
