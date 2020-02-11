@@ -1,4 +1,4 @@
-package Merging_10.CombineLatest_5;
+package Merging_10.Latest_5;
 
 import Utils.Generic;
 import io.reactivex.Observable;
