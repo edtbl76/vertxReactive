@@ -24,6 +24,7 @@ public class GroupsGetKeys_2 {
 
          */
 
+
         groupedObservable.flatMapSingle(
                 /*
                     This is a GREAT example of using reduce(). (we're doing this INSIDE our flatMapSingle, as

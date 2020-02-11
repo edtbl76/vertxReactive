@@ -12,6 +12,12 @@ public class Generic {
         }
     }
 
+    public static Integer getRandom() {
+
+        // This is the same as below, but we're defaulting to min, max of 0, 1000
+        return getRandom(0, 1000);
+    }
+
     public static Integer getRandom(int min, int max) {
 
         // Swap values if out of order.
