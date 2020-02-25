@@ -43,7 +43,7 @@ public class UnicastSubject_7 {
 
         /*
             The print statement marks the beginning of "normal operation".
-            By "normal", we mean PublishSubject.
+            By "normal", we mean PublishSubject
          */
         System.out.println("This is better...");
         Generic.wait(10);
