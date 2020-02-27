@@ -1,4 +1,4 @@
-package Concurrency_12.AdvancedConcurrency_5;
+package Concurrency_12.subscribeOn_5;
 
 import Utils.Generic;
 import io.reactivex.Observable;

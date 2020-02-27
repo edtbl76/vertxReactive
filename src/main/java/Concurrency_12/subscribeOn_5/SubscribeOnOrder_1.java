@@ -1,4 +1,4 @@
-package Concurrency_12.AdvancedConcurrency_5;
+package Concurrency_12.subscribeOn_5;
 
 import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
