@@ -19,6 +19,7 @@ public class observeOnIntro_1 {
         3.) At this point, our workflow is no longer IO-based, so our time spent idling is going to decrease. It makes
         sense to change things up here, because remaining on a dynamic thread model is more dangerous under the circumstances
         - let's change over to the computation() scheduler.
+        NOTE: we're pretending this is some long-running CPU hog of a process.
 
         4.) We do our processing, attach the Observer via subscribe, and we wrap it up.
 
