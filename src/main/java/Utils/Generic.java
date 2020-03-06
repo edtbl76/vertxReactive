@@ -12,6 +12,14 @@ public class Generic {
         }
     }
 
+    public static void waitMillis(long milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public static Integer getRandom() {
 
         // This is the same as below, but we're defaulting to min, max of 0, 1000

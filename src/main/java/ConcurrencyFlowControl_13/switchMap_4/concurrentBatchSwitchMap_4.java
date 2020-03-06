@@ -32,6 +32,15 @@ public class concurrentBatchSwitchMap_4 {
             The only adjustment in this example is using observeOn() to
             place each batch on a different thread.
 
+            NOTE: This is for demonstration purposes only... This is a useless pattern when using switchMap, because
+            it is going to cancel the previous observable (i.e. batch) either way.
+
+            This example is better suited for flatMap() in data driven workflows, where we need ALL of the events
+            being passed, regardless of how long it takes. By splitting threads out per batch, we can optimize
+            the amount of work being done by flatMap.
+
+            However... if only we could introduce concurrency per event....
+
          */
         Observable.interval(5, TimeUnit.SECONDS)
                 .map(l -> l + 1)
