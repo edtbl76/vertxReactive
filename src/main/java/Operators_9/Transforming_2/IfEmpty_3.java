@@ -1,9 +1,9 @@
-package Operators_9.Transformers_2;
+package Operators_9.Transforming_2;
 
 import io.reactivex.Observable;
 import io.reactivex.functions.Predicate;
 
-public class MegatronIfEmpty_3 {
+public class IfEmpty_3 {
 
     public static void main(String[] args) {
 

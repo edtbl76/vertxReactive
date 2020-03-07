@@ -1,10 +1,10 @@
-package Operators_9.Transformers_2;
+package Operators_9.Transforming_2;
 
 import io.reactivex.Observable;
 
 import java.util.Comparator;
 
-public class StarScreamSorted_4 {
+public class Sorted_4 {
     public static void main(String[] args) {
 
         /*

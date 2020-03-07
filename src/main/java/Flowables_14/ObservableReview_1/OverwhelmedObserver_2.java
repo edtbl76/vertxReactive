@@ -1,4 +1,4 @@
-package Flowables_14;
+package Flowables_14.ObservableReview_1;
 
 import Utils.Generic;
 import io.reactivex.Observable;
@@ -23,7 +23,8 @@ public class OverwhelmedObserver_2 {
 			        [RxCachedThreadScheduler-1]RCVD: 629
                 [main]Generated Event [5089722]
 
-            Our consumer is sufficiently overwhelmed by the tidal wave of events we have created.
+            Our consumer is sufficiently overwhelmed by the tidal wave of events we have created. In fact, it is so
+            far behind, it's possible that the system is going to run out of memory.
          */
         Observable.range(1, 100_000_000)
                 .map(ThisEvent::new)

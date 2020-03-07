@@ -1,11 +1,8 @@
-package Operators_9.Transformers_2;
+package Operators_9.Transforming_2;
 
 import io.reactivex.Observable;
-import io.reactivex.functions.BooleanSupplier;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
-public class ProwlRepeat_6 {
+public class Repeat_6 {
 
     public static void main(String[] args) {
 

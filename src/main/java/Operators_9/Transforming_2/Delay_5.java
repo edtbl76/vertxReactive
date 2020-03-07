@@ -1,11 +1,11 @@
-package Operators_9.Transformers_2;
+package Operators_9.Transforming_2;
 
 import Utils.Generic;
 import io.reactivex.Observable;
 
 import java.util.concurrent.TimeUnit;
 
-public class BumbleBeeDelay_5 {
+public class Delay_5 {
 
     public static void main(String[] args) {
         Observable.just("Now", "wait", "just", "a", "few", "seconds!")

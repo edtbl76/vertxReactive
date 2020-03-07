@@ -1,8 +1,8 @@
-package Operators_9.Transformers_2;
+package Operators_9.Transforming_2;
 
 import io.reactivex.Observable;
 
-public class OptimusStartsWith_2 {
+public class StartsWith_2 {
 
     public static void main(String[] args) {
 

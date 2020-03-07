@@ -1,9 +1,9 @@
-package Operators_9.Transformers_2;
+package Operators_9.Transforming_2;
 
 import io.reactivex.Observable;
 import org.apache.commons.lang3.StringUtils;
 
-public class XFormerMap_1 {
+public class Map_1 {
     public static void main(String[] args) {
 
         /*
