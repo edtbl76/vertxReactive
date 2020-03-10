@@ -59,6 +59,11 @@ public class ObservableOperatorNoLambda_1 {
             public Observer<? super T> apply(Observer<? super T> observer) {
                 /*
                     apply() automatically returns a new DisposableObserver for us.
+                    NOTE: This is case specific. While it's nice to have a DisposableObserver that manages
+                    disposal/cancellation, there are OTHER Observer implementations out there that we
+                    might need to consider.
+
+
                  */
                 return new DisposableObserver<>() {
 
