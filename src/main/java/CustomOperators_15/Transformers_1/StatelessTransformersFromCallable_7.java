@@ -5,7 +5,7 @@ import io.reactivex.ObservableTransformer;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class StatelessTransformersFromCallable_6 {
+public class StatelessTransformersFromCallable_7 {
 
     public static void main(String[] args) {
 
