@@ -1,0 +1,12 @@
+site_name: Reactive Programming
+nav:
+    - Introduction: Introduction.md
+    - Basic Building Blocks: BasicBuildingBlocks.md
+    - Additional Rx Types: additionalTypes.md
+    - Simple Operators: simpleOperators.md
+    - Combining: combiningObservables.md
+    - Multiple Observers & Scalability: multipleObservers.md
+    - Concurrency: concurrency.md
+    - Flowables: flowables.md
+    - Custom Operators: customOperators.md
+theme: readthedocs
