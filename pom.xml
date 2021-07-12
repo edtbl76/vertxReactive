@@ -12,7 +12,7 @@
     <properties>
         <jdk.version>11</jdk.version>
         <vertx.version>4.0.0-milestone4</vertx.version>
-        <rxjava.version>2.2.16</rxjava.version>
+        <rxjava.version>2.2.21</rxjava.version>
         <logback.version>1.2.3</logback.version>
         <checkstyle.version>3.1.0</checkstyle.version>
     </properties>
